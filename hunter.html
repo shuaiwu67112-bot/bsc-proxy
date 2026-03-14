@@ -5,56 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BSC 土狗猎手</title>
 <style>
-:root {
-  --bg: #090c12; --bg2: #0e1219; --bg3: #141a24;
-  --border: #1c2535; --border2: #232d40;
-  --text: #c4cfe0; --text2: #60728a; --text3: #323e52;
-  --green: #00d97e; --gdim: rgba(0,217,126,.12);
-  --amber: #f5a623; --adim: rgba(245,166,35,.12);
-  --red: #ff4560; --rdim: rgba(255,69,96,.12);
-  --purple: #9b6dff; --pdim: rgba(155,109,255,.12);
-  --teal: #00bcd4; --mono: 'Courier New',monospace;
-}
+:root{--bg:#090c12;--bg2:#0e1219;--bg3:#141a24;--border:#1c2535;--border2:#232d40;--text:#c4cfe0;--text2:#60728a;--text3:#323e52;--green:#00d97e;--gdim:rgba(0,217,126,.12);--amber:#f5a623;--adim:rgba(245,166,35,.12);--red:#ff4560;--rdim:rgba(255,69,96,.12);--purple:#9b6dff;--pdim:rgba(155,109,255,.12);--teal:#00bcd4;--mono:'Courier New',monospace}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,sans-serif;min-height:100vh;padding:20px}
 .wrap{max-width:960px;margin:0 auto}
 .topbar{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:20px}
-.logo{font:700 18px var(--mono);color:var(--green)}
-.logo span{color:var(--text3)}
+.logo{font:700 18px var(--mono);color:var(--green)}.logo span{color:var(--text3)}
 .ver{font-size:11px;color:var(--text3);font-family:var(--mono);margin-left:auto}
-.cfg{background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:16px;margin-bottom:14px}
-.cfg-title{font-size:11px;color:var(--text2);font-family:var(--mono);letter-spacing:2px;margin-bottom:10px}
-.cfg-row{display:flex;gap:8px;align-items:center}
-.cfg-input{flex:1;padding:9px 12px;background:var(--bg3);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:12px;outline:none;transition:border .2s}
-.cfg-input:focus{border-color:var(--teal)}
-.cfg-input::placeholder{color:var(--text3)}
-.save-btn{padding:9px 16px;background:var(--teal);color:#000;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--mono)}
-.cfg-status{font-size:11px;margin-top:8px;font-family:var(--mono)}
-.cfg-status.ok{color:var(--green)} .cfg-status.err{color:var(--red)}
-.main-panel{background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:16px;margin-bottom:14px}
-.input-row{display:flex;gap:8px;margin-bottom:10px}
-.ca-input{flex:1;padding:11px 14px;background:var(--bg3);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:13px;outline:none;transition:border .2s}
-.ca-input:focus{border-color:var(--green)}
-.ca-input::placeholder{color:var(--text3)}
-.fetch-btn{padding:11px 18px;background:var(--bg3);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-size:13px;cursor:pointer;font-family:var(--mono);transition:border .15s}
-.fetch-btn:hover{border-color:var(--teal);color:var(--teal)}
-.fetch-btn:disabled{opacity:.4;cursor:not-allowed}
-.go-btn{width:100%;padding:13px;background:var(--green);color:#000;border:none;border-radius:6px;font-size:14px;font-weight:700;font-family:var(--mono);cursor:pointer;letter-spacing:1px;transition:all .15s}
-.go-btn:hover{filter:brightness(1.08)}
-.go-btn:disabled{background:var(--border2);color:var(--text3);cursor:not-allowed}
-.token-strip{display:none;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px 14px;margin-bottom:10px;flex-wrap:wrap;gap:10px;align-items:center}
-.token-strip.show{display:flex}
+.panel{background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:16px;margin-bottom:14px}
+.sec{font-size:11px;color:var(--text2);font-family:var(--mono);letter-spacing:2px;margin-bottom:10px}
+.row{display:flex;gap:8px;margin-bottom:10px}
+.inp{flex:1;padding:11px 14px;background:var(--bg3);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:13px;outline:none;transition:border .2s}
+.inp:focus{border-color:var(--green)}.inp::placeholder{color:var(--text3)}
+.inp.sm{font-size:12px;padding:9px 12px}
+.btn{padding:11px 18px;background:var(--bg3);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-size:13px;cursor:pointer;font-family:var(--mono);transition:border .15s;white-space:nowrap}
+.btn:hover{border-color:var(--teal);color:var(--teal)}.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.go{width:100%;padding:13px;background:var(--green);color:#000;border:none;font-size:14px;font-weight:700;letter-spacing:1px}
+.btn.go:hover{filter:brightness(1.08)}.btn.go:disabled{background:var(--border2);color:var(--text3)}
+.strip{display:none;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px 14px;margin-bottom:10px;flex-wrap:wrap;gap:10px;align-items:center}
+.strip.show{display:flex}
 .t-name{font-weight:700;font-size:14px}
 .t-sym{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:4px;background:var(--pdim);color:var(--purple)}
-.t-pill{font-size:12px;color:var(--text2)} .t-pill b{color:var(--text);font-weight:500}
-.t-bond{font-size:11px;padding:2px 8px;border-radius:4px}
-.t-bond.low{background:var(--gdim);color:var(--green)}
-.t-bond.mid{background:var(--adim);color:var(--amber)}
-.t-bond.done{background:var(--gdim);color:var(--green)}
-.nar-row{display:flex;gap:8px;align-items:center;margin-bottom:10px}
-.nar-label{font-size:12px;color:var(--text2);white-space:nowrap}
-.nar-input{flex:1;padding:9px 12px;background:var(--bg3);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-size:12px;outline:none;transition:border .2s}
-.nar-input:focus{border-color:var(--amber)}
+.pill{font-size:12px;color:var(--text2)}.pill b{color:var(--text);font-weight:500}
+.bond{font-size:11px;padding:2px 8px;border-radius:4px}
+.bond.low{background:var(--gdim);color:var(--green)}.bond.mid{background:var(--adim);color:var(--amber)}.bond.done{background:var(--gdim);color:var(--green)}
+.nar{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.nar-lbl{font-size:12px;color:var(--text2);white-space:nowrap}
 .err{display:none;padding:8px 12px;background:var(--rdim);border:1px solid var(--red);border-radius:6px;color:var(--red);font-size:12px;margin-bottom:10px;font-family:var(--mono)}
 .err.show{display:block}
 .prog{height:2px;background:var(--border);border-radius:1px;margin:10px 0;display:none;overflow:hidden}
@@ -66,32 +42,31 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,sans-serif
 .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .card-name{font-size:13px;font-weight:700;font-family:var(--mono)}
 .card-role{font-size:11px;color:var(--text2);margin-left:auto}
-.pill{font-size:10px;padding:2px 7px;border-radius:4px;border:1px solid var(--border2);color:var(--text3);font-family:var(--mono)}
-.pill.working{border-color:var(--amber);color:var(--amber);background:var(--adim)}
-.pill.done{border-color:var(--green);color:var(--green);background:var(--gdim)}
+.tag{font-size:10px;padding:2px 7px;border-radius:4px;border:1px solid var(--border2);color:var(--text3);font-family:var(--mono)}
+.tag.w{border-color:var(--amber);color:var(--amber);background:var(--adim)}
+.tag.d{border-color:var(--green);color:var(--green);background:var(--gdim)}
 .card-body{padding:12px 14px;font-size:12px;line-height:1.9;color:var(--text2);min-height:140px;white-space:pre-wrap;font-family:var(--mono)}
 .card-body.live{color:var(--text)}
-.bouncing{display:none;padding:14px;gap:4px;align-items:center}
-.bouncing.on{display:flex}
-.b{width:5px;height:5px;border-radius:50%;background:var(--text3);animation:bonce 1.2s ease-in-out infinite}
-.b:nth-child(2){animation-delay:.2s}.b:nth-child(3){animation-delay:.4s}
-@keyframes bonce{0%,80%,100%{transform:translateY(0);opacity:.3}40%{transform:translateY(-5px);opacity:1}}
-.bl{font-size:11px;color:var(--text3);margin-left:6px;font-family:var(--mono)}
+.dots{display:none;padding:14px;gap:4px;align-items:center}
+.dots.on{display:flex}
+.d{width:5px;height:5px;border-radius:50%;background:var(--text3);animation:bnc 1.2s ease-in-out infinite}
+.d:nth-child(2){animation-delay:.2s}.d:nth-child(3){animation-delay:.4s}
+@keyframes bnc{0%,80%,100%{transform:translateY(0);opacity:.3}40%{transform:translateY(-5px);opacity:1}}
+.dl{font-size:11px;color:var(--text3);margin-left:6px;font-family:var(--mono)}
 .verdict{display:none;background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:18px}
 .verdict.show{display:block}
-.v-label{font-size:10px;color:var(--text3);font-family:var(--mono);letter-spacing:2px;margin-bottom:14px}
+.v-lbl{font-size:10px;color:var(--text3);font-family:var(--mono);letter-spacing:2px;margin-bottom:14px}
 .v-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
-.vs{text-align:center}
-.vs-k{font-size:10px;color:var(--text3);margin-bottom:4px;font-family:var(--mono)}
+.vs{text-align:center}.vs-k{font-size:10px;color:var(--text3);margin-bottom:4px;font-family:var(--mono)}
 .vs-v{font-size:18px;font-weight:700;font-family:var(--mono)}
 .v-main{padding:14px;border-radius:6px;font-size:15px;font-weight:700;font-family:var(--mono);text-align:center;letter-spacing:1px}
-.v-go{background:var(--gdim);color:var(--green);border:1px solid var(--green)}
-.v-no{background:var(--rdim);color:var(--red);border:1px solid var(--red)}
-.v-watch{background:var(--adim);color:var(--amber);border:1px solid var(--amber)}
-.c0 .dot{background:var(--green)} .c0 .card-name{color:var(--green)} .c0{border-color:var(--gdim)}
-.c1 .dot{background:var(--purple)} .c1 .card-name{color:var(--purple)} .c1{border-color:var(--pdim)}
-.c2 .dot{background:var(--teal)} .c2 .card-name{color:var(--teal)} .c2{border-color:rgba(0,188,212,.15)}
-.c3 .dot{background:var(--amber)} .c3 .card-name{color:var(--amber)} .c3{border-color:var(--adim)}
+.vgo{background:var(--gdim);color:var(--green);border:1px solid var(--green)}
+.vno{background:var(--rdim);color:var(--red);border:1px solid var(--red)}
+.vwatch{background:var(--adim);color:var(--amber);border:1px solid var(--amber)}
+.c0 .dot{background:var(--green)}.c0 .card-name{color:var(--green)}.c0{border-color:var(--gdim)}
+.c1 .dot{background:var(--purple)}.c1 .card-name{color:var(--purple)}.c1{border-color:var(--pdim)}
+.c2 .dot{background:var(--teal)}.c2 .card-name{color:var(--teal)}.c2{border-color:rgba(0,188,212,.15)}
+.c3 .dot{background:var(--amber)}.c3 .card-name{color:var(--amber)}.c3{border-color:var(--adim)}
 @media(max-width:600px){.grid{grid-template-columns:1fr}.v-stats{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
@@ -99,46 +74,46 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,sans-serif
 <div class="wrap">
 <div class="topbar">
   <div class="logo">BSC<span>//</span>HUNTER</div>
-  <div class="ver">v3 · 土狗猎手</div>
+  <div class="ver">v4 · Gemini驱动</div>
 </div>
-<div class="cfg">
-  <div class="cfg-title">// STEP 1 · 配置 Vercel 代理地址（只填一次，自动记住）</div>
-  <div class="cfg-row">
-    <input class="cfg-input" id="proxyUrl" placeholder="https://你的项目名.vercel.app" />
-    <button class="save-btn" onclick="saveProxy()">保存</button>
+<div class="panel">
+  <div class="sec">// STEP 1 · 配置代理地址（只填一次）</div>
+  <div class="row">
+    <input class="inp sm" id="proxyUrl" placeholder="https://bsc-proxy.vercel.app"/>
+    <button class="btn" onclick="saveProxy()">保存</button>
   </div>
-  <div class="cfg-status" id="cfgStatus"></div>
+  <div id="cfgStatus" style="font-size:11px;font-family:var(--mono);margin-top:4px"></div>
 </div>
-<div class="main-panel">
-  <div class="input-row">
-    <input class="ca-input" id="caIn" placeholder="粘贴 BSC 合约地址 0x...（Enter 自动拉取）" />
-    <button class="fetch-btn" id="fetchBtn" onclick="doFetch()">拉取数据</button>
+<div class="panel">
+  <div class="row">
+    <input class="inp" id="caIn" placeholder="粘贴 BSC 合约地址 0x...（Enter拉取）"/>
+    <button class="btn" id="fetchBtn" onclick="doFetch()">拉取数据</button>
   </div>
   <div class="err" id="errBox"></div>
-  <div class="token-strip" id="tokenStrip">
+  <div class="strip" id="strip">
     <span class="t-name" id="tName"></span>
     <span class="t-sym" id="tSym"></span>
-    <span class="t-pill">市值 <b id="tMcap"></b></span>
-    <span class="t-pill">开盘 <b id="tAge"></b></span>
-    <span class="t-pill">24h <b id="t24h"></b></span>
-    <span class="t-pill">换手 <b id="tTurn"></b></span>
-    <span class="t-bond" id="tBond"></span>
+    <span class="pill">市值 <b id="tMcap"></b></span>
+    <span class="pill">开盘 <b id="tAge"></b></span>
+    <span class="pill">24h <b id="t24h"></b></span>
+    <span class="pill">换手 <b id="tTurn"></b></span>
+    <span class="bond" id="tBond"></span>
   </div>
-  <div class="nar-row">
-    <span class="nar-label">叙事：</span>
-    <input class="nar-input" id="narIn" placeholder="CZ转发 / AI概念 / 无特殊叙事..." />
+  <div class="nar">
+    <span class="nar-lbl">叙事：</span>
+    <input class="inp sm" id="narIn" placeholder="CZ转发 / AI概念 / 无特殊叙事..."/>
   </div>
-  <button class="go-btn" id="goBtn" onclick="doAnalyze()">⚡ 四角色并行分析 · 模拟仓 $80</button>
+  <button class="btn go" id="goBtn" onclick="doAnalyze()">⚡ 四角色并行分析 · 模拟仓 $80</button>
 </div>
-<div class="prog" id="prog"><div class="prog-fill" id="progFill"></div></div>
+<div class="prog" id="prog"><div class="prog-fill" id="pf"></div></div>
 <div class="grid">
-  <div class="card c0"><div class="card-head"><div class="dot"></div><span class="card-name">小鼻</span><span class="card-role">合约安全</span><span class="pill" id="p0">待机</span></div><div class="bouncing" id="dot0"><div class="b"></div><div class="b"></div><div class="b"></div><span class="bl">嗅探中...</span></div><div class="card-body" id="b0">等待CA输入...</div></div>
-  <div class="card c1"><div class="card-head"><div class="dot"></div><span class="card-name">老狐</span><span class="card-role">叙事解读</span><span class="pill" id="p1">待机</span></div><div class="bouncing" id="dot1"><div class="b"></div><div class="b"></div><div class="b"></div><span class="bl">解读叙事...</span></div><div class="card-body" id="b1">等待分析...</div></div>
-  <div class="card c2"><div class="card-head"><div class="dot"></div><span class="card-name">阿准</span><span class="card-role">价位策略</span><span class="pill" id="p2">待机</span></div><div class="bouncing" id="dot2"><div class="b"></div><div class="b"></div><div class="b"></div><span class="bl">计算价位...</span></div><div class="card-body" id="b2">等待分析...</div></div>
-  <div class="card c3"><div class="card-head"><div class="dot"></div><span class="card-name">铁手</span><span class="card-role">止损纪律</span><span class="pill" id="p3">待机</span></div><div class="bouncing" id="dot3"><div class="b"></div><div class="b"></div><div class="b"></div><span class="bl">设定纪律...</span></div><div class="card-body" id="b3">等待分析...</div></div>
+  <div class="card c0"><div class="card-head"><div class="dot"></div><span class="card-name">小鼻</span><span class="card-role">合约安全</span><span class="tag" id="p0">待机</span></div><div class="dots" id="dot0"><div class="d"></div><div class="d"></div><div class="d"></div><span class="dl">嗅探中...</span></div><div class="card-body" id="b0">等待CA输入...</div></div>
+  <div class="card c1"><div class="card-head"><div class="dot"></div><span class="card-name">老狐</span><span class="card-role">叙事解读</span><span class="tag" id="p1">待机</span></div><div class="dots" id="dot1"><div class="d"></div><div class="d"></div><div class="d"></div><span class="dl">解读叙事...</span></div><div class="card-body" id="b1">等待分析...</div></div>
+  <div class="card c2"><div class="card-head"><div class="dot"></div><span class="card-name">阿准</span><span class="card-role">价位策略</span><span class="tag" id="p2">待机</span></div><div class="dots" id="dot2"><div class="d"></div><div class="d"></div><div class="d"></div><span class="dl">计算价位...</span></div><div class="card-body" id="b2">等待分析...</div></div>
+  <div class="card c3"><div class="card-head"><div class="dot"></div><span class="card-name">铁手</span><span class="card-role">止损纪律</span><span class="tag" id="p3">待机</span></div><div class="dots" id="dot3"><div class="d"></div><div class="d"></div><div class="d"></div><span class="dl">设定纪律...</span></div><div class="card-body" id="b3">等待分析...</div></div>
 </div>
 <div class="verdict" id="verdict">
-  <div class="v-label">// 综合决策 · 模拟仓 $80</div>
+  <div class="v-lbl">// 综合决策 · 模拟仓 $80</div>
   <div class="v-stats">
     <div class="vs"><div class="vs-k">安全</div><div class="vs-v" id="vSafe">—</div></div>
     <div class="vs"><div class="vs-k">叙事</div><div class="vs-v" id="vNar">—</div></div>
@@ -151,25 +126,26 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,sans-serif
 <script>
 let td=null,PROXY=localStorage.getItem('bsc_proxy')||'';
 window.addEventListener('load',()=>{
-  if(PROXY){document.getElementById('proxyUrl').value=PROXY;document.getElementById('cfgStatus').textContent='✓ 已配置：'+PROXY;document.getElementById('cfgStatus').className='cfg-status ok';}
+  if(PROXY){document.getElementById('proxyUrl').value=PROXY;ss('cfgStatus','✓ 已配置：'+PROXY,'#00d97e');}
   document.getElementById('caIn').addEventListener('keydown',e=>{if(e.key==='Enter')doFetch();});
 });
+function ss(id,txt,color){const e=document.getElementById(id);e.textContent=txt;if(color)e.style.color=color;}
 function saveProxy(){
   let v=document.getElementById('proxyUrl').value.trim().replace(/\/$/,'');
   if(!v.startsWith('http'))v='https://'+v;
   PROXY=v;localStorage.setItem('bsc_proxy',PROXY);
-  document.getElementById('cfgStatus').textContent='✓ 已保存：'+PROXY+'（下次打开自动读取）';
-  document.getElementById('cfgStatus').className='cfg-status ok';
+  ss('cfgStatus','✓ 已保存：'+PROXY,'#00d97e');
 }
 function fmtUSD(n){if(!n)return '$0';if(n>=1e6)return '$'+(n/1e6).toFixed(2)+'M';if(n>=1e3)return '$'+(n/1e3).toFixed(1)+'K';return '$'+Math.round(n);}
 function showErr(m){const e=document.getElementById('errBox');e.textContent=m;e.classList.add('show');}
 function hideErr(){document.getElementById('errBox').classList.remove('show');}
-function setStatus(i,s){const el=document.getElementById('p'+i);el.className='pill';if(s==='working'){el.classList.add('working');el.textContent='分析中';}else if(s==='done'){el.classList.add('done');el.textContent='完成';}else el.textContent='待机';}
-function showBounce(i,on){document.getElementById('dot'+i).className='bouncing'+(on?' on':'');document.getElementById('b'+i).style.display=on?'none':'block';}
+function setSt(i,s){const el=document.getElementById('p'+i);el.className='tag';if(s==='w'){el.classList.add('w');el.textContent='分析中';}else if(s==='d'){el.classList.add('d');el.textContent='完成';}else el.textContent='待机';}
+function showDots(i,on){document.getElementById('dot'+i).className='dots'+(on?' on':'');document.getElementById('b'+i).style.display=on?'none':'block';}
+
 async function doFetch(){
   const ca=document.getElementById('caIn').value.trim();
   if(!ca.startsWith('0x')||ca.length<30){showErr('请输入正确的BSC合约地址');return;}
-  if(!PROXY){showErr('请先填写Vercel代理地址并保存');return;}
+  if(!PROXY){showErr('请先填写并保存代理地址');return;}
   hideErr();
   const btn=document.getElementById('fetchBtn');btn.disabled=true;btn.textContent='拉取中...';
   try{
@@ -177,77 +153,170 @@ async function doFetch(){
     if(!r.ok)throw new Error('代理返回'+r.status);
     const j=await r.json();if(j.error)throw new Error(j.error);
     const a=j.data?.attributes;if(!a)throw new Error('该CA暂无数据');
-    const mcap=parseFloat(a.market_cap_usd||a.fdv_usd||0),price=parseFloat(a.price_usd||0),vol=parseFloat(a.volume_usd?.h24||0),ch=parseFloat(a.price_change_percentage?.h24||0),desc=a.description||'';
+    const mcap=parseFloat(a.market_cap_usd||a.fdv_usd||0),price=parseFloat(a.price_usd||0),
+          vol=parseFloat(a.volume_usd?.h24||0),ch=parseFloat(a.price_change_percentage?.h24||0),
+          desc=a.description||'';
     let age='未知',bond=null;
     const pool=(j.included||[]).find(x=>x.type==='pool');
-    if(pool?.attributes?.pool_created_at){const mins=Math.round((Date.now()-new Date(pool.attributes.pool_created_at))/60000);age=mins<60?mins+'分钟前':mins<1440?Math.round(mins/60)+'小时前':Math.round(mins/1440)+'天前';}
+    if(pool?.attributes?.pool_created_at){
+      const mins=Math.round((Date.now()-new Date(pool.attributes.pool_created_at))/60000);
+      age=mins<60?mins+'分钟前':mins<1440?Math.round(mins/60)+'小时前':Math.round(mins/1440)+'天前';
+    }
     if(mcap>0)bond=Math.min(Math.round(mcap/69000*100),100);
     td={ca,name:a.name||'未知',sym:a.symbol||'?',mcap,price,vol,ch,desc,age,bond};
     document.getElementById('tName').textContent=td.name;
     document.getElementById('tSym').textContent='$'+td.sym;
     document.getElementById('tMcap').textContent=fmtUSD(mcap);
     document.getElementById('tAge').textContent=age;
-    const t24=document.getElementById('t24h');t24.textContent=(ch>=0?'+':'')+ch.toFixed(1)+'%';t24.style.color=ch>=0?'var(--green)':'var(--red)';
+    const t24=document.getElementById('t24h');
+    t24.textContent=(ch>=0?'+':'')+ch.toFixed(1)+'%';
+    t24.style.color=ch>=0?'var(--green)':'var(--red)';
     document.getElementById('tTurn').textContent=mcap>0?Math.round(vol/mcap*100)+'%':'—';
     const be=document.getElementById('tBond');
-    if(bond===null){be.textContent='已毕业';be.className='t-bond done';}
-    else if(bond>=80){be.textContent='Bonding '+bond+'% ⚡';be.className='t-bond mid';}
-    else{be.textContent='Bonding '+bond+'%';be.className='t-bond low';}
-    document.getElementById('tokenStrip').classList.add('show');
+    if(bond===null){be.textContent='已毕业';be.className='bond done';}
+    else if(bond>=80){be.textContent='Bonding '+bond+'%⚡';be.className='bond mid';}
+    else{be.textContent='Bonding '+bond+'%';be.className='bond low';}
+    document.getElementById('strip').classList.add('show');
   }catch(e){showErr('拉取失败：'+e.message);}
   btn.disabled=false;btn.textContent='拉取数据';
 }
+
 const SYS=[
-`你是小鼻，BSC土狗嗅探犬。根据数据30秒给出安全判断：\n开盘时间：X\n市值体量：X\n换手率：X\nBonding进度：X%\n风险信号：X\n结论：绿灯✅/黄灯⚠️/红牌❌+一句话`,
-`你是老狐，BSC叙事官：\n叙事类型：X\n叙事强度：S/A/B/C级+一句话\n情绪窗口：还有约X小时\n最适合的狗：X\n最大风险：X\n结论：立刻冲/等回调/叙事偏弱`,
-`你是阿准，BSC狙击手，给出$80仓位出货策略：\n当前阶段：X\n阶段依据：X\n天花板预估：保守$X/乐观$X\n$80出货计划：\n  第一档：涨X倍出$40→账面$X\n  第二档：涨X倍出$25→账面$X\n  底仓$15：博极限\n时间止损：X小时\n注：2026年3月BSC恐慌期，目标保守一档`,
-`你是铁手，BSC止损官，$80模拟仓：\n止损线：入场价×0.5（跌50%全出亏$40）\n第一止盈：入场价×3（出$40回本账面$120）\n第二止盈：入场价×6（出$25账面$195）\n底仓$15：不再看\n时间止损：4小时\n铁手的话：X\n口令：设好单，关屏幕，不盯盘。`
+`你是小鼻，BSC土狗嗅探犬。根据以下数据给出安全判断，格式固定：
+开盘时间：X
+市值体量：X（说明风险等级）
+换手率：X（说明含义）
+Bonding进度：X%（解释含义）
+风险信号：X（列出主要风险）
+合约建议：建议去tokensniffer.com验证，重点查蜜罐和黑名单
+结论：绿灯✅/黄灯⚠️/红牌❌ + 一句话理由`,
+
+`你是老狐，BSC土狗叙事官。分析叙事触发信息，格式固定：
+叙事类型：X（CZ背书/Binance官方/热梗文化/KOL喊单/无明显叙事）
+叙事强度：X级（S/A/B/C）+ 一句话解释
+情绪窗口：还有约X小时（说明理由）
+最适合的狗：什么特征的代币最吃这个叙事
+最大风险：这类叙事最常见的割法是什么
+结论：立刻冲/等回调进/叙事偏弱不值得`,
+
+`你是阿准，BSC土狗狙击手。根据实时数据给出$80仓位出货策略，格式固定：
+当前阶段：X（开盘蓄力/主升段/高位震荡/出货衰退）
+判断依据：X（用市值/开盘时间/换手率具体说明）
+天花板预估：保守$X / 乐观$X（说明依据）
+$80出货计划：
+  第一档：涨X倍时出$40 → 账面$X（触发市值约$X）
+  第二档：涨X倍时出$25 → 账面$X
+  底仓$15：博极限不再看
+时间止损：超过X小时无明显拉升全部清仓
+结论：当前入场的风险收益比评价（备注：2026年3月BSC恐慌期流动性偏紧）`,
+
+`你是铁手，BSC土狗止损官。强制确认三条线，基于$80模拟仓，格式固定：
+仓位确认：$80模拟仓（亏光可接受）
+止损线：入场价×0.5（跌50%必须全出，亏$40，无任何例外）
+第一止盈：入场价×3（出$40，此时已回本，账面$120）
+第二止盈：入场价×6（再出$25，账面$195）
+底仓$15：剩余不再看，涨跌随意
+时间止损：持有超过X小时无拉升，全仓清出
+铁手评语：根据当前数据说一句让人冷静的话
+最后口令：设好单，关屏幕，不盯盘。`
 ];
+
 function buildPrompt(){
   const nar=document.getElementById('narIn').value||'无特殊叙事';
-  let p=`时间：${new Date().toLocaleString('zh-CN')}\n叙事：${nar}\n模拟仓：$80\n`;
-  if(td){p+=`代币：${td.name}($${td.sym})\n市值：${fmtUSD(td.mcap)}\n价格：$${td.price}\n24h：${td.ch.toFixed(1)}%\n换手：${td.mcap>0?Math.round(td.vol/td.mcap*100)+'%':'—'}\n开盘：${td.age}\nBonding：${td.bond!==null?td.bond+'%':'已毕业'}\n描述：${td.desc.slice(0,150)}`;}
+  let p=`分析时间：${new Date().toLocaleString('zh-CN')}\n叙事触发：${nar}\n模拟仓：$80\n`;
+  if(td){
+    p+=`\n【链上实时数据】\n`;
+    p+=`代币名称：${td.name}（$${td.sym}）\n`;
+    p+=`合约地址：${td.ca}\n`;
+    p+=`当前市值：${fmtUSD(td.mcap)}（精确$${Math.round(td.mcap)}）\n`;
+    p+=`当前价格：$${td.price}\n`;
+    p+=`24h涨跌幅：${td.ch.toFixed(1)}%\n`;
+    p+=`24h交易量：${fmtUSD(td.vol)}\n`;
+    p+=`换手率：${td.mcap>0?Math.round(td.vol/td.mcap*100)+'%':'未知'}\n`;
+    p+=`开盘时间：${td.age}\n`;
+    p+=`Bonding进度：${td.bond!==null?td.bond+'%':'已毕业进入PancakeSwap'}\n`;
+    p+=`代币描述：${td.desc.slice(0,200)||'无描述'}\n`;
+  }else{
+    p+='\n（未拉取链上数据，请根据叙事信息分析）\n';
+  }
   return p;
 }
-async function callAPI(idx,prompt){
-  const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:600,system:SYS[idx],messages:[{role:'user',content:prompt}]})});
-  const d=await r.json();if(d.content?.[0]?.text)return d.content[0].text;throw new Error(d.error?.message||'API错误');
+
+async function callGemini(system,prompt){
+  const r=await fetch(`${PROXY}/api/gemini`,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({system,prompt})
+  });
+  const d=await r.json();
+  if(d.text)return d.text;
+  throw new Error(d.error||'Gemini API错误');
 }
-function fallback(i){
-  const m=td?fmtUSD(td.mcap):'未知',ag=td?td.age:'未知',bn=td?(td.bond!==null?td.bond+'%':'已毕业'):'未知';
-  return[`开盘：${ag}\n市值：${m}\nBonding：${bn}\n风险信号：请到tokensniffer.com验证\n结论：⚠️黄灯—需手动验证\n[本地分析]`,`叙事强度：B级\n情绪窗口：约2-4小时\n结论：等待更多信号\n[本地分析]`,`阶段：${td?.age?.includes('分钟')?'开盘蓄力期':'需更多数据'}\n天花板：保守${td?fmtUSD(td.mcap*3):'$150K'}/乐观${td?fmtUSD(td.mcap*8):'$400K'}\n第一档：涨3倍出$40→$120\n第二档：涨6倍出$25→$195\n时间止损：4小时\n[本地分析]`,`止损：入场×0.5\n止盈1：入场×3出$40\n止盈2：入场×6出$25\n底仓$15不再看\n时间止损：4小时\n铁手的话：严守纪律，设好单关屏幕\n[本地分析]`][i];
-}
+
 async function runOne(i,prompt,delay){
   await new Promise(r=>setTimeout(r,delay));
-  setStatus(i,'working');showBounce(i,true);
-  let text;try{text=await callAPI(i,prompt);}catch(e){text=fallback(i);}
-  showBounce(i,false);
+  setSt(i,'w');showDots(i,true);
+  let text;
+  try{text=await callGemini(SYS[i],prompt);}
+  catch(e){
+    const m=td?fmtUSD(td.mcap):'未知',ag=td?td.age:'未知',bn=td?(td.bond!==null?td.bond+'%':'已毕业'):'未知';
+    const fb=[
+      `开盘时间：${ag}\n市值体量：${m}\nBonding进度：${bn}\n风险信号：请到tokensniffer.com验证\n结论：⚠️黄灯—API错误，需手动验证\n错误：${e.message}`,
+      `叙事强度：B级\n情绪窗口：约2-4小时\n结论：等待更多信号\nAPI错误：${e.message}`,
+      `当前阶段：${td?.age?.includes('分钟')?'开盘蓄力期':'需更多数据'}\n天花板：保守${td?fmtUSD(td.mcap*3):'$150K'}/乐观${td?fmtUSD(td.mcap*8):'$400K'}\n第一档：涨3倍出$40→$120\n第二档：涨6倍出$25→$195\n时间止损：4小时\nAPI错误：${e.message}`,
+      `止损线：入场×0.5\n第一止盈：入场×3出$40\n第二止盈：入场×6出$25\n底仓$15不再看\n时间止损：4小时\n铁手评语：严守纪律\nAPI错误：${e.message}`
+    ];
+    text=fb[i];
+  }
+  showDots(i,false);
   const el=document.getElementById('b'+i);el.classList.add('live');el.textContent='';
-  let j=0;await new Promise(res=>{const iv=setInterval(()=>{if(j<text.length){el.textContent+=text[j++];}else{clearInterval(iv);res();}},9);});
-  setStatus(i,'done');return text;
+  let j=0;
+  await new Promise(res=>{
+    const iv=setInterval(()=>{
+      if(j<text.length){el.textContent+=text[j++];}
+      else{clearInterval(iv);res();}
+    },8);
+  });
+  setSt(i,'d');return text;
 }
+
 async function doAnalyze(){
-  const btn=document.getElementById('goBtn');btn.disabled=true;btn.textContent='分析中...';
+  const btn=document.getElementById('goBtn');
+  btn.disabled=true;btn.textContent='分析中...';
   document.getElementById('verdict').classList.remove('show');
-  for(let i=0;i<4;i++){setStatus(i,'');document.getElementById('b'+i).textContent='等待分析...';document.getElementById('b'+i).classList.remove('live');showBounce(i,false);}
-  const pb=document.getElementById('prog'),pf=document.getElementById('progFill');pb.classList.add('on');let pg=0;
+  for(let i=0;i<4;i++){setSt(i,'');document.getElementById('b'+i).textContent='等待分析...';document.getElementById('b'+i).classList.remove('live');showDots(i,false);}
+  const pb=document.getElementById('prog'),pf=document.getElementById('pf');
+  pb.classList.add('on');let pg=0;
   const pt=setInterval(()=>{pg=Math.min(pg+1.2,88);pf.style.width=pg+'%';},300);
   const prompt=buildPrompt();
-  const results=await Promise.all([runOne(0,prompt,0),runOne(1,prompt,120),runOne(2,prompt,240),runOne(3,prompt,360)]);
-  clearInterval(pt);pf.style.width='100%';setTimeout(()=>{pb.classList.remove('on');pf.style.width='0';},500);
+  const results=await Promise.all([
+    runOne(0,prompt,0),
+    runOne(1,prompt,100),
+    runOne(2,prompt,200),
+    runOne(3,prompt,300)
+  ]);
+  clearInterval(pt);pf.style.width='100%';
+  setTimeout(()=>{pb.classList.remove('on');pf.style.width='0';},500);
   const[r0,r1,r2]=results;
-  let safe='⚠️';if(r0.includes('绿灯')||r0.includes('✅'))safe='✅';else if(r0.includes('红牌')||r0.includes('❌'))safe='❌';
-  let nar='B';if(r1.includes('S级'))nar='S';else if(r1.includes('A级'))nar='A';else if(r1.includes('C级'))nar='C';
-  let stage='—';if(r2.includes('蓄力'))stage='蓄力';else if(r2.includes('主升'))stage='主升';else if(r2.includes('高位'))stage='高位⚠️';else if(r2.includes('出货'))stage='出货❌';
+  let safe='⚠️';
+  if(r0.includes('绿灯')||r0.includes('✅'))safe='✅';
+  else if(r0.includes('红牌')||r0.includes('❌'))safe='❌';
+  let nar='B';
+  if(r1.includes('S级'))nar='S';else if(r1.includes('A级'))nar='A';else if(r1.includes('C级'))nar='C';
+  let stage='—';
+  if(r2.includes('蓄力'))stage='蓄力';else if(r2.includes('主升'))stage='主升';
+  else if(r2.includes('高位'))stage='高位⚠️';else if(r2.includes('出货'))stage='出货❌';
   const mults=r2.match(/涨(\d+)倍/g)||[];
-  document.getElementById('vSafe').textContent=safe;document.getElementById('vSafe').style.color=safe==='✅'?'var(--green)':safe==='❌'?'var(--red)':'var(--amber)';
-  document.getElementById('vNar').textContent=nar+'级';document.getElementById('vNar').style.color=nar==='S'?'var(--green)':nar==='A'?'var(--teal)':'var(--amber)';
-  document.getElementById('vStage').textContent=stage;document.getElementById('vStage').style.color=stage.includes('⚠️')||stage.includes('❌')?'var(--red)':'var(--green)';
-  document.getElementById('vTarget').textContent=mults[0]||'3-6x';
+  const vs=document.getElementById('vSafe'),vn=document.getElementById('vNar'),
+        vst=document.getElementById('vStage'),vt=document.getElementById('vTarget');
+  vs.textContent=safe;vs.style.color=safe==='✅'?'var(--green)':safe==='❌'?'var(--red)':'var(--amber)';
+  vn.textContent=nar+'级';vn.style.color=nar==='S'?'var(--green)':nar==='A'?'var(--teal)':'var(--amber)';
+  vst.textContent=stage;vst.style.color=stage.includes('⚠️')||stage.includes('❌')?'var(--red)':'var(--green)';
+  vt.textContent=mults[0]||'3-6x';
   const vm=document.getElementById('vMain');
-  if(safe==='❌'||stage.includes('出货')){vm.textContent='❌ 不碰—风险过高';vm.className='v-main v-no';}
-  else if(safe==='✅'&&(nar==='S'||nar==='A')&&(stage==='蓄力'||stage==='主升')){vm.textContent='⚡ 冲—严格止损 $80入场';vm.className='v-main v-go';}
-  else{vm.textContent='👁 观望—等更多信号';vm.className='v-main v-watch';}
+  if(safe==='❌'||stage.includes('出货')){vm.textContent='❌ 不碰 — 风险过高';vm.className='v-main vno';}
+  else if(safe==='✅'&&(nar==='S'||nar==='A')&&(stage==='蓄力'||stage==='主升')){vm.textContent='⚡ 冲 — 严格止损 $80入场';vm.className='v-main vgo';}
+  else{vm.textContent='👁 观望 — 等更多信号';vm.className='v-main vwatch';}
   document.getElementById('verdict').classList.add('show');
   btn.disabled=false;btn.textContent='⚡ 四角色并行分析 · 模拟仓 $80';
 }
@@ -256,6 +325,6 @@ async function doAnalyze(){
 </html>
 ```
 
----
-
-
+Commit 之后等 30 秒，刷新：
+```
+https://bsc-proxy.vercel.app/hunter.html
