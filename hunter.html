@@ -147,7 +147,8 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,sans-serif
   </div>
   <div class="v-main" id="vMain">—</div>
 </div>
-</div><script>
+</div>
+<script>
 let td=null,PROXY=localStorage.getItem('bsc_proxy')||'';
 window.addEventListener('load',()=>{
   if(PROXY){document.getElementById('proxyUrl').value=PROXY;document.getElementById('cfgStatus').textContent='✓ 已配置：'+PROXY;document.getElementById('cfgStatus').className='cfg-status ok';}
